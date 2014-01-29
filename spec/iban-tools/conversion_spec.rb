@@ -15,6 +15,12 @@ module IBANTools
             local2iban('DE', :blz => '32050000', :account_number => '46463055')
           iban.should be_valid_check_digits
         end
+        it 'returns valid IBAN, when account starts with zero (octal)' do
+          iban = Conversion.
+            local2iban('DE', :blz => '32050000', :account_number => '06463055')
+          iban.code.should == "DE65320500000006463055"
+          iban.should be_valid_check_digits
+        end
       end
     end
 

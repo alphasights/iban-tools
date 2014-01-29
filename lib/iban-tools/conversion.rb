@@ -5,7 +5,7 @@ module IBANTools
       config = load_config country_code
 
       bban = config.map do |key, value|
-        value[1] % data[key.to_sym]
+        value[1] % data[key.to_sym].to_i
       end.join('')
 
       check_digits = "%02d" % checksum(country_code, bban)
