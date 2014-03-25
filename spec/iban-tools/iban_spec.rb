@@ -177,7 +177,8 @@ module IBANTools
         "DE89370400440532013000"]].
         each do |input, output|
 
-        it "generates iban #{output} from #{input}" do
+        it "generates iban #{output} from BLZ #{input.last[:blz]} and "\
+           "account number #{input.last[:account_number]}" do
           IBAN.from_local(*input).code.should == output
         end
       end

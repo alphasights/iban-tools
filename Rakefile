@@ -1,11 +1,14 @@
 # vim:ts=2:sw=2:et:
 
 require 'rubygems'
+require 'bundler/setup'
+require 'appraisal'
 gem 'rspec', '>= 1.2.4'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 
-Spec::Rake::SpecTask.new do |t|
-  t.libs << 'lib'
-  t.spec_opts = ["--color" ]
+task :default => :core
+
+RSpec::Core::RakeTask.new(:core) do |spec|
+  spec.pattern = 'spec/**/*_spec.rb'
+  spec.rspec_opts = ['--backtrace']
 end
-

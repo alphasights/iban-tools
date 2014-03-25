@@ -1,3 +1,9 @@
+'AT':
+  blz: ['\d{5}', "%05d"]
+  account_number: ['\d{11}', "%011d"]
+'CH':
+  blz: ['\d{5}', "%05d"]
+  account_number: ['\w{12}', "%12s"]
 'DE':
   blz: ['\d{8}', "%08d"]
   account_number: ['\d{10}', "%010d"]

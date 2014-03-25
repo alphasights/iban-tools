@@ -18,6 +18,12 @@ Gem::Specification.new do |s|
   ]
   s.description  = "Validates IBAN account numbers"
 
-  s.add_development_dependency "rspec"
-  s.add_development_dependency "coveralls"
+  s.add_development_dependency 'rspec'
+  s.add_development_dependency 'coveralls'
+  s.add_development_dependency 'appraisal'
+
+  if ENV['RUBY_VERSION'] =~ /rbx/
+    s.add_dependency 'rubysl'
+    s.add_development_dependency 'rubinius-coverage'
+  end
 end

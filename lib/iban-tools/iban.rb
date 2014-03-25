@@ -28,6 +28,10 @@ module IBANTools
       Conversion.iban2local country_code, bban
     end
 
+    def to_bic
+      Conversion.iban2bic country_code, bban
+    end
+
     def validation_errors( rules = nil )
       errors = []
       return [:too_short] if @code.size < 5

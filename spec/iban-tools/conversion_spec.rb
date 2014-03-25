@@ -5,11 +5,26 @@ module IBANTools
 
     describe '::local2iban' do
       context 'given valid data' do
-        it 'returns valid IBAN' do
-          iban = Conversion.
-            local2iban('DE', :blz => '1234123', :account_number => '12341234')
+        it 'returns valid DE IBAN' do
+          iban = Conversion.local2iban('DE',
+            :blz => '01234123', :account_number => '12341234')
           iban.should be_valid_check_digits
         end
+
+        it 'returns valid CH IBAN with leading BLZ zero' do
+          iban = Conversion.local2iban('CH',
+            :blz => '0226', :account_number => '22684897640Z')
+          iban.should be_valid_check_digits
+          iban.check_digits.should eq('97')
+        end
+
+        it 'returns valid CH IBAN without leading BLZ zero' do
+          iban = Conversion.local2iban('CH',
+            :blz => '226', :account_number => '22684897640Z')
+          iban.should be_valid_check_digits
+          iban.check_digits.should eq('97')
+        end
+
         it 'returns valid IBAN, when checksum is <10' do
           iban = Conversion.
             local2iban('DE', :blz => '32050000', :account_number => '46463055')
@@ -45,6 +60,20 @@ module IBANTools
       end
     end
 
+    describe '::iban2bic' do
+      context 'given valid data' do
+        it 'returns valid BIC' do
+          bic = Conversion.iban2bic 'DE', '763500000012341234'
+          begin
+            require 'banking_data'
+            bic.should eq('BYLADEM1ERH')
+          rescue LoadError
+            bic.should eq(nil)
+          end
+        end
+      end
+    end
+
     describe '::checksum' do
       [ "AD1200012030200359100100",
         "AE070331234567890123456",
@@ -56,6 +85,7 @@ module IBANTools
         "BG80BNBG96611020345678",
         "BH67BMAG00001299123456",
         "CH9300762011623852957",
+        "CH970022622684897640Z",
         "CY17002001280000001200527600",
         "CZ6508000000192000145399",
         "DE89370400440532013000",

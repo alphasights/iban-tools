@@ -2,10 +2,28 @@ language: ruby
 rvm:
   - 1.8.7
   - 1.9.3
+  - 2.0.0
   - ruby-head
   - jruby-18mode
   - jruby-19mode
   - jruby-head
-  - rbx-18mode
-  - rbx-19mode
+  - rbx-2.1.1
 script: rspec
+gemfile:
+  - gemfiles/non_BIC.gemfile
+  - gemfiles/BIC_rails_4.gemfile
+  - gemfiles/BIC_rails_3.gemfile
+matrix:
+  exclude:
+    - rvm: 1.8.7
+      gemfile: gemfiles/BIC_rails_3.gemfile
+    - rvm: 1.8.7
+      gemfile: gemfiles/BIC_rails_4.gemfile
+    - rvm: jruby-18mode
+      gemfile: gemfiles/BIC_rails_3.gemfile
+    - rvm: jruby-18mode
+      gemfile: gemfiles/BIC_rails_4.gemfile
+    - rvm: rbx-18mode
+      gemfile: gemfiles/BIC_rails_3.gemfile
+    - rvm: rbx-18mode
+      gemfile: gemfiles/BIC_rails_4.gemfile
