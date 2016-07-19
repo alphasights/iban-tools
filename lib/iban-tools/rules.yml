@@ -130,6 +130,11 @@
   length: 27
   bban_pattern: '\d{7}[A-Z0-9]{16}'
 
+'GT':
+  # Guatemala
+  length: 28
+  bban_pattern: '[A-Z]{4}\d{20}'
+
 'HR':
   # Croatia
   length: 21
@@ -324,3 +329,8 @@
   # Virgin Islands
   length: 24
   bban_pattern: '[A-Z0-9]{4}\d{16}'
+
+'XK':
+  # Kosovo
+  length: 20
+  bban_pattern: '\d{16}'
