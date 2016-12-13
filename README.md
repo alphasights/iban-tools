@@ -47,4 +47,4 @@ Convert  local account numbers to IBAN and back to local.
 
 ## Credit
 
-[Iulianu](http://github.com/iulianu) originally wrote [iban-tools](http://github.com/iulianu/iban-tools). The team at [AlphaSights](https://engineering.alphasights.com) is currently maintaining the gem.
+[Iulianu](http://github.com/iulianu) originally wrote [iban-tools](http://github.com/iulianu/iban-tools). The team at [AlphaSights](https://engineering.alphasights.com) is NOT currently maintaining the gem. This repository is DEAD.
