@@ -89,7 +89,7 @@ module IBANTools
 
     # The IBAN code in a human-readable format
     def prettify
-      @code.gsub(/(.{4})/, '\1 ').strip
+      @code.scan(/.{1,4}/).join(' ').strip
     end
   end
 end
