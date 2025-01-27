@@ -240,6 +240,11 @@
   length: 21
   bban_pattern: '[A-Z]{4}[A-Z0-9]{13}'
 
+'MA':
+  # Morocco
+  length: 28
+  bban_pattern: '\d{24}'
+
 'MC':
   # Monaco
   length: 27
